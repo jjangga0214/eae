@@ -16,10 +16,10 @@ def parse_cwd_name():
     return path_units.pop()
 
 
-files = ["./server/cali_server.py",
-         "./server/tcp_server.py",
-         "./client/cali_client.py",
-         "./client/client_App.py"]
+file_paths = ["./server/cali_server.py",
+              "./server/tcp_server.py",
+              "./client/cali_client.py",
+              "./client/client_App.py"]
 
 expected_cwd = "Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi"
 
@@ -31,6 +31,15 @@ if __name__ == "__main__":
         print("작업이 시작되었습니다")
         ip = get_ip_addr()
         print("이 컴퓨터의 ip 주소 감지 : %s" % ip)
-        for file in files:
-            with open(file, "r+") as f:
-                print(f.read())
+        for file_path in file_paths:
+            with open(file_path, "r+") as f:
+                new_lines = []
+                for line in f:
+                    if line.startswith("HOST"):
+                        line = "HOST = \'%s\'\n" % ip
+                    new_lines.append(line)
+                f.seek(0)
+                f.writelines(new_lines)
+                f.truncate()
+                print(file_path + " 작업 완료..")
+        print("작업이 완료되었습니다. 모든 HOST 변수의 값이 \'%s\' 로 변경되었습니다." % ip)
