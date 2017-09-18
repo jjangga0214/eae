@@ -9,7 +9,7 @@ top.title('Raspberry Pi Smart Video Car Calibration')
 
 #HOST = '192.168.0.159'    # Server(Raspberry Pi) IP address
 #HOST = '172.30.1.9'
-HOST = '192.168.34.226'
+HOST = '192.168.35.65'
 PORT = 21567
 BUFSIZ = 1024             # buffer size
 ADDR = (HOST, PORT)

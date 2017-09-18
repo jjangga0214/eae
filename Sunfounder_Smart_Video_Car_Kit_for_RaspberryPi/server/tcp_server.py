@@ -11,7 +11,7 @@ ctrl_cmd = ['forward', 'backward', 'left', 'right', 'stop', 'read cpu_temp', 'ho
 busnum = 1          # Edit busnum to 0, if you uses Raspberry Pi 1 or 0
 
 #HOST = '172.30.1.9'           # The variable of HOST is null, so the function bind( ) can be bound to all valid addresses.
-HOST = '192.168.34.143'
+HOST = '192.168.35.65'
 PORT = 21567
 BUFSIZ = 1024       # Size of the buffer
 ADDR = (HOST, PORT)
