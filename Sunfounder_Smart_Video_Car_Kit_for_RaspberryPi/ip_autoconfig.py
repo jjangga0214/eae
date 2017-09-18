@@ -73,7 +73,7 @@ def ip_autoconfig():
         except FileNotFoundError:
             print("[경고!] " + file_path + " 를 찾을 수 없습니다. 해당 파일에 대해서는 작업을 수행하지 않습니다.")
 
-    print("총 %d 개 파일에 대해 작업이 완료되었습니다. 모든 HOST 변수의 값이 \'%s\' 로 변경되었습니다." % (count, ip))
+    print("작업이 완료되었습니다. 총 %d 개 파일에서 모든 HOST 변수의 값이 \'%s\' 로 변경되었습니다." % (count, ip))
 
 
 if __name__ == "__main__":
