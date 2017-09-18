@@ -59,17 +59,20 @@ def ip_autoconfig():
     count = 0
     for file_path in file_paths:
         try:
-            with open(file_path, "r+") as f:
-                new_lines = []
-                for line in f:
+            new_lines = []
+            with open(file_path, "r") as input_f:
+                for line in input_f:
                     if line.startswith("HOST"):
                         line = "HOST = \'%s\'\n" % ip
                     new_lines.append(line)
-                f.seek(0)
-                f.writelines(new_lines)
 
-                print(file_path + " 작업 완료..")
-                count += 1
+            with open(file_path, "w") as output_f:
+                output_f.seek(0)
+                output_f.writelines(new_lines)
+                output_f.truncate()
+
+            print(file_path + " 작업 완료..")
+            count += 1
         except FileNotFoundError:
             print("[경고!] " + file_path + " 를 찾을 수 없습니다. 해당 파일에 대해서는 작업을 수행하지 않습니다.")
 
