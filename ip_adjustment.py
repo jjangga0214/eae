@@ -2,7 +2,7 @@ import socket
 import os
 
 
-def get_ipaddress():
+def get_ip_addr():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("gmail.com", 80))
     r = s.getsockname()[0]
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     else:
         print("작업이 시작되었습니다")
         print()
-        ip = get_ipaddress()
+        ip = get_ip_addr()
         for file in files:
             with open(file, "r+") as f:
                 print(f.read())
