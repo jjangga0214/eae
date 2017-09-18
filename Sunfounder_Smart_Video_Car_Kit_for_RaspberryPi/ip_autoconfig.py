@@ -66,7 +66,7 @@ def ip_autoconfig():
                     new_lines.append(line)
                 f.seek(0)
                 f.writelines(new_lines)
-                f.truncate()
+
                 print(file_path + " 작업 완료..")
         except FileNotFoundError:
             print("[경고!] " + file_path + " 를 찾을 수 없습니다. 해당 파일에 대해서는 작업을 수행하지 않습니다.")
