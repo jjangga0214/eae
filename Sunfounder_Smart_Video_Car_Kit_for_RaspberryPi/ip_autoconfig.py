@@ -56,6 +56,7 @@ def ip_autoconfig():
             else:
                 print("응답으로는 y 또는 n 을 입력해주세요")
     print("작업이 시작되었습니다")
+    count = 0
     for file_path in file_paths:
         try:
             with open(file_path, "r+") as f:
@@ -68,10 +69,11 @@ def ip_autoconfig():
                 f.writelines(new_lines)
 
                 print(file_path + " 작업 완료..")
+                count += 1
         except FileNotFoundError:
             print("[경고!] " + file_path + " 를 찾을 수 없습니다. 해당 파일에 대해서는 작업을 수행하지 않습니다.")
 
-    print("작업이 완료되었습니다. 모든 HOST 변수의 값이 \'%s\' 로 변경되었습니다." % ip)
+    print("총 %d 개 파일에 대해 작업이 완료되었습니다. 모든 HOST 변수의 값이 \'%s\' 로 변경되었습니다." % (count, ip))
 
 
 if __name__ == "__main__":
