@@ -29,8 +29,8 @@ if __name__ == "__main__":
         print("Error : 디렉토리 오류 \nError Message : " + expected_cwd + " 폴더에서 실행해야 합니다.")
     else:
         print("작업이 시작되었습니다")
-        print()
         ip = get_ip_addr()
+        print("이 컴퓨터의 ip 주소 감지 : %s" % ip)
         for file in files:
             with open(file, "r+") as f:
                 print(f.read())
