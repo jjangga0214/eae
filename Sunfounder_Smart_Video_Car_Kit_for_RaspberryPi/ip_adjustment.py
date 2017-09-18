@@ -23,15 +23,41 @@ file_paths = ["./server/cali_server.py",
 
 expected_cwd = "Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi"
 
-if __name__ == "__main__":
+
+def ip_autoconfig():
     cwd_name = parse_cwd_name()
     if parse_cwd_name() != expected_cwd:
-        print("Error : 디렉토리 오류 \nError Message : " + expected_cwd + " 폴더에서 실행해야 합니다.")
-    else:
-        print("작업이 시작되었습니다")
+        print("현재 이 파이썬 파일이 위치한 디렉토리의 이름이 %s 가 아닌 %s 입니다." % (expected_cwd, cwd_name))
+        while True:
+            response = input("계속 작업할까요? [y/n] : ").strip().lower()
+
+            if response == "y":
+                break
+            elif response == "n":
+                print("아무런 작업이 실행되지 않은채로 종료합니다")
+                return
+            else:
+                print("응답으로는 y 또는 n 을 입력해주세요")
+
+    try:
         ip = get_ip_addr()
         print("이 컴퓨터의 ip 주소 감지 : %s" % ip)
-        for file_path in file_paths:
+    except socket.gaierror:
+        print("인터넷에 연결되어 있지 않은 것 같습니다. 자동으로 ip를 찾을 수 없습니다.")
+        while True:
+            response = input("로컬 네트워크로 연결된 경우, 수동으로 ip를 입력하시겠습니다. ? [y/n] : ")
+
+            if response == "y":
+                ip = input("ip : ").strip()
+                break
+            elif response == "n":
+                print("아무런 작업이 실행되지 않은채로 종료합니다")
+                return
+            else:
+                print("응답으로는 y 또는 n 을 입력해주세요")
+    print("작업이 시작되었습니다")
+    for file_path in file_paths:
+        try:
             with open(file_path, "r+") as f:
                 new_lines = []
                 for line in f:
@@ -42,4 +68,11 @@ if __name__ == "__main__":
                 f.writelines(new_lines)
                 f.truncate()
                 print(file_path + " 작업 완료..")
-        print("작업이 완료되었습니다. 모든 HOST 변수의 값이 \'%s\' 로 변경되었습니다." % ip)
+        except FileNotFoundError:
+            print("[경고!] " + file_path + " 를 찾을 수 없습니다. 해당 파일에 대해서는 작업을 수행하지 않습니다.")
+
+    print("작업이 완료되었습니다. 모든 HOST 변수의 값이 \'%s\' 로 변경되었습니다." % ip)
+
+
+if __name__ == "__main__":
+    ip_autoconfig()
