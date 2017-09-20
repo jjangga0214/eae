@@ -19,7 +19,9 @@ sudo wget -O ip_autoconfig.py https://goo.gl/C57Gpa
 ```
 
 #### 동작
-설치 후에는 다음과 같이 간단하게 다운로드 받은 파이썬 파일을 실행하면 됩니다. 자동으로 `ip`를 추출하여 모든 설정을 자동으로 해줄 것입니다. 만일 네트워크에 연결되지 않았다면 `ip`를 수동으로 입력받습니다. 단, 이 파일은 python 3로 작성되었기 때문에, **python3 명령어를 사용해서 실행해주세요.**
+설치 후에는 다음과 같이 간단하게 다운로드 받은 파이썬 파일을 실행하면 됩니다. 자동으로 `ip`를 추출하여 모든 설정을 자동으로 해줄 것입니다. 만일 네트워크에 연결되지 않았다면 `ip`를 수동으로 입력받습니다. 만일 랜선을 통한 이더넷으로 연결하시려면 라즈베리파이의 wifi를 끄신 후 아래 명령어를 실행하시면 수동으로 지정할 수 있고, 한번에 4개파일 모두 업데이트가 이뤄집니다. 
+단, 이 파일은 python 3로 작성되었기 때문에, **python3 명령어를 사용해서 실행해주세요.**
 ```shell
 sudo python3 ip_autoconfig.py
 ```
+![demo](https://raw.githubusercontent.com/jjangga0214/eae/master/pi%40raspberrypi%3A%20~-Documents-Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi_063.png)
